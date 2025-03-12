@@ -19,7 +19,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepublishOnly": "npm run build",
-    "postinstall": "node -e \"try { require('./scripts/post-install.js') } catch(e) { /* ignore */ }\"",
+    "postinstall": "node ./scripts/post-install.js || true",
     "release": "standard-version",
     "format": "prettier --write 'src/**/*.{js,jsx,css}'",
     "typecheck": "tsc --noEmit"

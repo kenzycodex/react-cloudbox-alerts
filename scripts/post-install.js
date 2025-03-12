@@ -3,11 +3,13 @@
  * Shows a thank you message and helpful information after installation
  */
 
-// Check if we're in a development environment (avoid showing message during development)
-if (process.env.npm_config_production !== 'false' && !process.env.CI && !process.env.GITHUB_ACTIONS) {
+// Simpler condition that works more reliably across environments
+// Only skip if explicitly in CI or if DEBUG is disabled
+if (!process.env.CI && !process.env.GITHUB_ACTIONS) {
   try {
+    // Get package information - using a more reliable path approach
     const packageJson = require('../package.json');
-    const version = packageJson.version;
+    const version = packageJson.version || '0.2.3';
     const author = packageJson.author || 'Kenzy Codex';
     const repoUrl = packageJson.repository && packageJson.repository.url 
       ? packageJson.repository.url.replace('git+', '').replace('.git', '')
@@ -23,77 +25,37 @@ if (process.env.npm_config_production !== 'false' && !process.env.CI && !process
       yellow: '\x1b[33m',
       cyan: '\x1b[36m',
       magenta: '\x1b[35m',
-      red: '\x1b[31m',
       bold: '\x1b[1m',
       reset: '\x1b[0m'
     };
     
-    // Customizable message content
-    const messageConfig = {
-      title: `REACT CLOUDBOX ALERTS v${version}`,
-      tagline: `Thanks for installing react-cloudbox-alerts!`,
-      madeBy: `Made with ❤️ by ${author}`,
-      links: [
-        { label: 'Documentation', url: 'README.md' },
-        { label: 'GitHub', url: repoUrl },
-        { label: 'Issues', url: issuesUrl }
-      ],
-      quickStartCode: `import { AlertContainer, AlertService } from 'react-cloudbox-alerts'`,
-      quickStartUsage: `// Add <AlertContainer /> to your app
-// Then use AlertService.success('Your message!')`
-    };
+    // Simplified message that's more reliable and still has dynamic values
+    const message = `
+${colors.cyan}${colors.bold}    ☁️  REACT CLOUDBOX ALERTS v${version} ${colors.reset}
     
-    // Function to center text in a given width
-    const centerText = (text, width) => {
-      const padding = Math.max(0, width - text.length);
-      const leftPad = Math.floor(padding / 2);
-      return ' '.repeat(leftPad) + text + ' '.repeat(padding - leftPad);
-    };
+${colors.blue}    ╭──────────────────────────────────────────╮${colors.reset}
+${colors.blue}    │                                          │${colors.reset}
+${colors.blue}    │  ${colors.yellow}${colors.bold}Thanks for installing react-cloudbox-alerts!${colors.reset}${colors.blue}  │${colors.reset}
+${colors.blue}    │                                          │${colors.reset}
+${colors.blue}    │  ${colors.green}• GitHub: ${colors.cyan}${repoUrl}${colors.reset}${colors.blue}     │${colors.reset}
+${colors.blue}    │  ${colors.green}• Issues: ${colors.cyan}${issuesUrl}${colors.reset}${colors.blue}    │${colors.reset}
+${colors.blue}    │                                          │${colors.reset}
+${colors.blue}    │  ${colors.magenta}Made with ❤️  by ${author}${colors.reset}${colors.blue}               │${colors.reset}
+${colors.blue}    │                                          │${colors.reset}
+${colors.blue}    ╰──────────────────────────────────────────╯${colors.reset}
+`;
     
-    // Determine the box width based on content
-    const boxWidth = 60;
-    
-    // Build the message
-    let message = '\n';
-    
-    // Title
-    message += `${colors.cyan}${colors.bold}    ☁️  ${messageConfig.title} ${colors.reset}\n\n`;
-    
-    // Box top
-    message += `${colors.blue}    ╭${'─'.repeat(boxWidth - 10)}╮${colors.reset}\n`;
-    
-    // Tagline
-    message += `${colors.blue}    │${' '.repeat(boxWidth - 10)}│${colors.reset}\n`;
-    message += `${colors.blue}    │  ${colors.yellow}${colors.bold}${messageConfig.tagline}${colors.reset}${' '.repeat(boxWidth - 10 - messageConfig.tagline.length - 4)}${colors.blue}  │${colors.reset}\n`;
-    message += `${colors.blue}    │${' '.repeat(boxWidth - 10)}│${colors.reset}\n`;
-    
-    // Links
-    messageConfig.links.forEach(link => {
-      const linkText = `${colors.green}• ${link.label}: ${colors.cyan}${colors.bold}${link.url}${colors.reset}`;
-      const padding = boxWidth - 10 - link.label.length - link.url.length - 4;
-      message += `${colors.blue}    │  ${linkText}${' '.repeat(Math.max(0, padding))}${colors.blue}  │${colors.reset}\n`;
-    });
-    
-    // Made by
-    message += `${colors.blue}    │${' '.repeat(boxWidth - 10)}│${colors.reset}\n`;
-    message += `${colors.blue}    │  ${colors.magenta}${messageConfig.madeBy}${colors.reset}${' '.repeat(boxWidth - 10 - messageConfig.madeBy.length - 4)}${colors.blue}  │${colors.reset}\n`;
-    message += `${colors.blue}    │${' '.repeat(boxWidth - 10)}│${colors.reset}\n`;
-    
-    // Quick start
-    message += `${colors.blue}    │  ${colors.magenta}Quick Start:${colors.reset}${' '.repeat(boxWidth - 10 - 'Quick Start:'.length - 4)}${colors.blue}  │${colors.reset}\n`;
-    message += `${colors.blue}    │  ${colors.yellow}${messageConfig.quickStartCode}${colors.reset}${' '.repeat(Math.max(0, boxWidth - 10 - messageConfig.quickStartCode.length - 4))}${colors.blue}  │${colors.reset}\n`;
-    message += `${colors.blue}    │  ${colors.yellow}${messageConfig.quickStartUsage.split('\n')[0]}${colors.reset}${' '.repeat(Math.max(0, boxWidth - 10 - messageConfig.quickStartUsage.split('\n')[0].length - 4))}${colors.blue}  │${colors.reset}\n`;
-    
-    if (messageConfig.quickStartUsage.split('\n').length > 1) {
-      message += `${colors.blue}    │  ${colors.yellow}${messageConfig.quickStartUsage.split('\n')[1]}${colors.reset}${' '.repeat(Math.max(0, boxWidth - 10 - messageConfig.quickStartUsage.split('\n')[1].length - 4))}${colors.blue}  │${colors.reset}\n`;
-    }
-    
-    // Box bottom
-    message += `${colors.blue}    │${' '.repeat(boxWidth - 10)}│${colors.reset}\n`;
-    message += `${colors.blue}    ╰${'─'.repeat(boxWidth - 10)}╯${colors.reset}\n`;
-    
+    // Use both console.log and stderr.write to maximize chances of visibility
     console.log(message);
+    
+    // Also try writing directly to stderr as a backup method
+    try {
+      process.stderr.write(message + '\n');
+    } catch (e) {
+      // Ignore errors from stderr write
+    }
   } catch (error) {
     // Silently exit on error - never break installation because of a message
+    console.error('Note: Post-install message failed to display, but installation completed successfully.');
   }
 }
