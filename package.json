@@ -5,8 +5,7 @@
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist",
-    "scripts/post-install.js"
+    "dist"
   ],
   "sideEffects": false,
   "scripts": {
@@ -19,7 +18,6 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepublishOnly": "npm run build",
-    "postinstall": "node ./scripts/post-install.js || exit 0",
     "release": "standard-version",
     "format": "prettier --write 'src/**/*.{js,jsx,css}'",
     "typecheck": "tsc --noEmit"
