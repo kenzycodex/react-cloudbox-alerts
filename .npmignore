@@ -1,0 +1,52 @@
+# Source files
+src/
+stories/
+
+# Tests
+__tests__/
+**/*.test.js
+**/*.test.jsx
+**/*.spec.js
+**/*.spec.jsx
+coverage/
+
+# Build tools
+.github/
+.storybook/
+rollup.config.js
+babel.config.js
+jest.config.js
+.eslintrc.json
+.prettierrc
+.travis.yml
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+
+# Documentation files not needed in npm package
+docs/
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+
+# Other files
+.DS_Store
+Thumbs.db
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+storybook-static/

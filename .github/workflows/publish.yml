@@ -1,0 +1,70 @@
+name: Release & Publish
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org/'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run tests
+        run: npm test
+      
+      - name: Build package
+        run: npm run build
+      
+      - name: Generate release notes
+        id: release-notes
+        run: |
+          # Get the last two tags
+          CURRENT_TAG=$(git describe --tags --abbrev=0)
+          PREVIOUS_TAG=$(git describe --tags --abbrev=0 --exclude=$CURRENT_TAG)
+          
+          # Generate release notes based on commits between tags
+          NOTES=$(git log $PREVIOUS_TAG..$CURRENT_TAG --pretty=format:"- %s" --no-merges)
+          
+          # Save release notes to file and to output
+          echo "$NOTES" > release-notes.md
+          echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
+          echo "$NOTES" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+      
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          body_path: release-notes.md
+          files: |
+            LICENSE
+            README.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      
+      - name: Build Storybook
+        run: npm run build-storybook
+      
+      - name: Deploy Storybook to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: storybook-static
+          branch: gh-pages

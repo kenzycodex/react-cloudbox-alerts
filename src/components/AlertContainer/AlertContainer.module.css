@@ -1,0 +1,49 @@
+.alertContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  pointer-events: none; /* Allow clicks to pass through container */
+}
+
+/* Styles for elements inside container */
+.alertWrapper {
+  pointer-events: auto; /* Re-enable pointer events for alerts */
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+/* Dark mode styles */
+.darkMode {
+  /* Dark mode specific styles */
+  --alert-text-color: #ffffff;
+  --alert-bg-color: #121212;
+  --alert-border-color: #27272A;
+}
+
+/* Positions */
+.alertContainer[data-position="top-right"] {
+  align-items: flex-end;
+}
+
+.alertContainer[data-position="top-left"] {
+  align-items: flex-start;
+}
+
+.alertContainer[data-position="top-center"] {
+  align-items: center;
+}
+
+.alertContainer[data-position="bottom-right"] {
+  align-items: flex-end;
+  flex-direction: column-reverse;
+}
+
+.alertContainer[data-position="bottom-left"] {
+  align-items: flex-start;
+  flex-direction: column-reverse;
+}
+
+.alertContainer[data-position="bottom-center"] {
+  align-items: center;
+  flex-direction: column-reverse;
+}

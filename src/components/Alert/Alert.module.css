@@ -1,0 +1,424 @@
+/* Base alert styling */
+.alert {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-start;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+/* Icon container */
+.alertIcon {
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  flex-shrink: 0; /* Prevent icon from shrinking */
+  width: 1.5rem; /* Consistent width for alignment */
+  justify-content: center; /* Center icon */
+}
+
+/* Make sure icons within the alert icon container maintain proper sizing */
+.alertIcon i {
+  font-size: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.5rem; /* Consistent height */
+  width: 1.5rem; /* Consistent width */
+}
+
+/* Content area */
+.alertContent {
+  flex: 1;
+  margin-right: 1rem;
+  padding-top: 0.125rem; /* Slight padding to align with icon */
+}
+
+/* Close button */
+.closeButton {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  height: 1.5rem; /* Consistent height */
+  width: 1.5rem; /* Consistent width */
+  flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+.closeButton:hover {
+  opacity: 1;
+}
+
+.closeButton:focus {
+  outline: none;
+  opacity: 1;
+}
+
+/* Custom styles for Font Awesome icons */
+.alert i.fa,
+.alert i.fas,
+.alert i.far,
+.alert i.fab {
+  /* Ensure Font Awesome icons are sized correctly */
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Custom styles for Remix icons */
+.alert i.ri {
+  /* Ensure Remix icons are sized correctly */
+  vertical-align: middle;
+}
+
+/* Alert variants */
+.alert-primary {
+  color: #6065f2;
+  background-color: rgba(198, 200, 247, 0.1);
+  border-color: #6065f2;
+}
+
+.alert-secondary {
+  color: #545b62;
+  background-color: rgba(204, 206, 210, 0.1);
+  border-color: #545b62;
+}
+
+.alert-success {
+  color: #57d25f;
+  background-color: rgba(183, 225, 186, 0.1);
+  border-color: #57d25f;
+}
+
+.alert-danger {
+  color: #e873a9;
+  background-color: rgba(255, 218, 235, 0.1);
+  border-color: #e873a9;
+}
+
+.alert-warning {
+  color: #f8c432;
+  background-color: rgba(255, 235, 223, 0.1);
+  border-color: #f8c432;
+}
+
+.alert-info {
+  color: #fa9674;
+  background-color: rgba(255, 230, 222, 0.1);
+  border-color: #fa9674;
+}
+
+.alert-light {
+  color: #545b62;
+  background-color: rgba(250, 250, 250, 0.1);
+  border-color: #545b62;
+}
+
+/* Background variants */
+.bg-primary {
+  color: white;
+  background-color: #6065f2;
+  border-color: #6065f2;
+}
+
+.bg-secondary {
+  color: white;
+  background-color: #545b62;
+  border-color: #545b62;
+}
+
+.bg-success {
+  color: white;
+  background-color: #57d25f;
+  border-color: #57d25f;
+}
+
+.bg-danger {
+  color: white;
+  background-color: #e873a9;
+  border-color: #e873a9;
+}
+
+.bg-warning {
+  color: #212529;
+  background-color: #f8c432;
+  border-color: #f8c432;
+}
+
+.bg-info {
+  color: white;
+  background-color: #fa9674;
+  border-color: #fa9674;
+}
+
+.bg-light {
+  color: #212529;
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+}
+
+/* Animation variants */
+.animation-fade.entering {
+  opacity: 0;
+  animation: fade-in 0.3s forwards;
+}
+
+.animation-fade.leaving {
+  animation: fade-out 0.3s forwards;
+}
+
+.animation-slide.entering {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slide-up-in 0.3s forwards;
+}
+
+.animation-slide.leaving {
+  animation: slide-up-out 0.3s forwards;
+}
+
+.animation-slide-up.entering {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slide-up-in 0.3s forwards;
+}
+
+.animation-slide-up.leaving {
+  animation: slide-up-out 0.3s forwards;
+}
+
+.animation-slide-down.entering {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: slide-down-in 0.3s forwards;
+}
+
+.animation-slide-down.leaving {
+  animation: slide-down-out 0.3s forwards;
+}
+
+.animation-slide-left.entering {
+  opacity: 0;
+  transform: translateX(20px);
+  animation: slide-left-in 0.3s forwards;
+}
+
+.animation-slide-left.leaving {
+  animation: slide-left-out 0.3s forwards;
+}
+
+.animation-slide-right.entering {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slide-right-in 0.3s forwards;
+}
+
+.animation-slide-right.leaving {
+  animation: slide-right-out 0.3s forwards;
+}
+
+.animation-bounce.entering {
+  opacity: 0;
+  transform: scale(0.5);
+  animation: bounce-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.animation-bounce.leaving {
+  animation: bounce-out 0.3s forwards;
+}
+
+.animation-zoom.entering {
+  opacity: 0;
+  transform: scale(0.9);
+  animation: zoom-in 0.3s forwards;
+}
+
+.animation-zoom.leaving {
+  animation: zoom-out 0.3s forwards;
+}
+
+/* Position variants - used for animation directions */
+.position-top {
+  transform-origin: top center;
+}
+
+.position-bottom {
+  transform-origin: bottom center;
+}
+
+.position-left {
+  transform-origin: left center;
+}
+
+.position-right {
+  transform-origin: right center;
+}
+
+.position-center {
+  transform-origin: center center;
+}
+
+/* Animation keyframes */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slide-up-in {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up-out {
+  from { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to { 
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes slide-down-in {
+  from { 
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down-out {
+  from { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@keyframes slide-left-in {
+  from { 
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-left-out {
+  from { 
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to { 
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+@keyframes slide-right-in {
+  from { 
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-right-out {
+  from { 
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to { 
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+}
+
+@keyframes bounce-in {
+  from { 
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce-out {
+  0% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.1);
+  }
+  100% { 
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+@keyframes zoom-in {
+  from { 
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes zoom-out {
+  from { 
+    opacity: 1;
+    transform: scale(1);
+  }
+  to { 
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+/* Dark mode adjustments - using CSS variables from themes.css instead of overriding colors directly */
+:global(.dark-mode) .alert {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}

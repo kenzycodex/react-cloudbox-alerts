@@ -1,0 +1,104 @@
+{
+  "name": "react-cloudbox-alerts",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "rollup -c",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint --ext .js,.jsx src/",
+    "lint:fix": "eslint --ext .js,.jsx src/ --fix",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "prepublishOnly": "npm run build",
+    "release": "standard-version",
+    "format": "prettier --write 'src/**/*.{js,jsx,css}'",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kenzycodex/react-cloudbox-alerts.git"
+  },
+  "keywords": [
+    "react",
+    "component",
+    "alert",
+    "notification",
+    "toast",
+    "message",
+    "ui",
+    "feedback"
+  ],
+  "author": "Kenzy Codex",
+  "license": "MIT",
+  "type": "commonjs",
+  "description": "A flexible and customizable alert system for React applications",
+  "bugs": {
+    "url": "https://github.com/kenzycodex/react-cloudbox-alerts/issues"
+  },
+  "homepage": "https://github.com/kenzycodex/react-cloudbox-alerts#readme",
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.9",
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-react": "^7.26.3",
+    "@chromatic-com/storybook": "^3.2.5",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-url": "^8.0.2",
+    "@storybook/addon-a11y": "^8.6.4",
+    "@storybook/addon-essentials": "^8.6.4",
+    "@storybook/addon-interactions": "^8.6.4",
+    "@storybook/addon-links": "^8.6.4",
+    "@storybook/addon-onboarding": "^8.6.4",
+    "@storybook/addon-webpack5-compiler-swc": "^2.1.0",
+    "@storybook/blocks": "^8.6.4",
+    "@storybook/react": "^8.6.4",
+    "@storybook/react-webpack5": "^8.6.4",
+    "@storybook/test": "^8.6.4",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^14.6.1",
+    "eslint": "^9.22.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-storybook": "^0.11.4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "prettier": "^3.5.3",
+    "prop-types": "^15.8.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "rollup": "^4.35.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "standard-version": "^9.5.0",
+    "storybook": "^8.6.4"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended",
+      "plugin:storybook/recommended"
+    ]
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "remixicon": "^4.6.0"
+  }
+}

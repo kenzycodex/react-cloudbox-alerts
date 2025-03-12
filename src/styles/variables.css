@@ -1,0 +1,56 @@
+:root {
+  /* Colors */
+  --color-primary: #6065f2;
+  --color-secondary: #545b62;
+  --color-success: #57d25f;
+  --color-danger: #e873a9;
+  --color-warning: #f8c432;
+  --color-info: #fa9674;
+  --color-light: #f8f9fa;
+  --color-dark: #343a40;
+  
+  /* Text colors */
+  --text-light: #f8f9fa;
+  --text-dark: #343a40;
+  --text-muted: #6c757d;
+  
+  /* Backgrounds */
+  --bg-light: #ffffff;
+  --bg-dark: #121212;
+  --bg-card-light: #ffffff;
+  --bg-card-dark: #1D1D1F;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  
+  /* Borders */
+  --border-radius: 0.25rem;
+  --border-radius-lg: 0.5rem;
+  --border-width: 1px;
+  --border-color-light: rgba(0, 0, 0, 0.125);
+  --border-color-dark: #27272A;
+  
+  /* Transitions */
+  --transition-speed: 0.2s;
+  --transition-timing: ease-in-out;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  
+  /* Z-index values */
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+  --z-index-toast: 1080;
+  --z-index-alert: 1090;
+}
