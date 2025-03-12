@@ -26,6 +26,10 @@
     "type": "git",
     "url": "git+https://github.com/kenzycodex/react-cloudbox-alerts.git"
   },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
   "keywords": [
     "react",
     "component",
