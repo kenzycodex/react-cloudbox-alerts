@@ -21,7 +21,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org/'
       
       - name: Install dependencies
-        run: npm ci
+        run: npm install
       
       - name: Run tests
         run: npm test
@@ -32,18 +32,22 @@ jobs:
       - name: Generate release notes
         id: release-notes
         run: |
-          # Get the last two tags
-          CURRENT_TAG=$(git describe --tags --abbrev=0)
-          PREVIOUS_TAG=$(git describe --tags --abbrev=0 --exclude=$CURRENT_TAG)
+          # Get the tag name
+          CURRENT_TAG=${GITHUB_REF#refs/tags/}
           
-          # Generate release notes based on commits between tags
-          NOTES=$(git log $PREVIOUS_TAG..$CURRENT_TAG --pretty=format:"- %s" --no-merges)
+          # Try to get previous tag, if it fails use a simpler approach
+          PREVIOUS_TAG=$(git describe --tags --abbrev=0 $CURRENT_TAG^ 2>/dev/null || echo "")
           
-          # Save release notes to file and to output
+          if [ -z "$PREVIOUS_TAG" ]; then
+            # If there's no previous tag, just get all commits up to current tag
+            NOTES=$(git log --pretty=format:"- %s" --no-merges $CURRENT_TAG)
+          else
+            # Generate release notes based on commits between tags
+            NOTES=$(git log $PREVIOUS_TAG..$CURRENT_TAG --pretty=format:"- %s" --no-merges)
+          fi
+          
+          # Save release notes to file
           echo "$NOTES" > release-notes.md
-          echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
-          echo "$NOTES" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
       
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
