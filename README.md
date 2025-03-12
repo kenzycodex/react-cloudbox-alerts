@@ -5,6 +5,7 @@ A flexible and powerful alert system for React applications.
 ![NPM](https://img.shields.io/npm/l/react-cloudbox-alerts)
 ![npm](https://img.shields.io/npm/v/react-cloudbox-alerts)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/react-cloudbox-alerts)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/kenzycodex/react-cloudbox-alerts/test.yml?branch=main)
 
 React Cloudbox Alerts provides a complete solution for displaying notifications, toasts, confirmations, and progress indicators in your React applications. With a focus on flexibility, performance, and developer experience, this library makes it easy to add beautiful alerts with minimal setup.
 
@@ -19,6 +20,20 @@ React Cloudbox Alerts provides a complete solution for displaying notifications,
 - 🧩 **Modular Architecture** - Use only what you need
 - 📦 **Small Footprint** - Minimal impact on your bundle size
 - 🧪 **Well Tested** - Comprehensive test coverage
+
+## Documentation
+
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Advanced Usage](#advanced-usage)
+- [API Reference](#api-reference)
+- [Browser Support](#browser-support)
+- [Changelog](CHANGELOG.md)
+- [Contributing Guidelines](CONTRIBUTING.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [License](LICENSE)
+
+For full documentation and examples, visit our [Storybook](https://kenzycodex.github.io/react-cloudbox-alerts).
 
 ## Installation
 
@@ -293,13 +308,11 @@ React Cloudbox Alerts supports all modern browsers:
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+We welcome contributions from the community! Please check out our [Contributing Guidelines](CONTRIBUTING.md) for details on how to get started and our [Code of Conduct](CODE_OF_CONDUCT.md) for our community standards.
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+## Versioning
+
+This project follows [Semantic Versioning](https://semver.org/). For the versions available, see the [tags on this repository](https://github.com/kenzycodex/react-cloudbox-alerts/tags).
 
 ## License
 
